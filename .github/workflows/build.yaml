@@ -12,3 +12,8 @@ jobs:
         run: make -j$(nproc)
       - name: Display what is in the repo after the build
         run: ls
+      - name: Upload the finished program so we can download it
+        uses: actions/upload-artifact@v7
+        with:
+          name: main
+          path: ./main
