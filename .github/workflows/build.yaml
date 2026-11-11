@@ -1,0 +1,16 @@
+name: Building the main.c file using make
+on: [push, pull_request]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone is the git repo
+        uses: actions/checkout@v7
+      - name: Run a software update
+        run: sudo apt update && sudo apt dist-upgrade -y
+      - name: Display what is in the repo before the build
+        run: ls
+      - name: Run the build
+        run: make -j$(nproc)
+      - name: Display what is in the repo after the build
+        run: ls
